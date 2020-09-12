@@ -354,7 +354,11 @@ s_bake;
 	
 static thread_local bx::RngMwc s_rng;
 
+#ifdef __linux__
+#define EMBREE_LIB "libembree3.so"
+#else
 #define EMBREE_LIB "embree3.dll"
+#endif
 
 namespace embree
 {
@@ -835,7 +839,11 @@ static void shutdownWorkerThread()
 }
 
 #if BX_ARCH_64BIT
+#ifdef __linux__
+#define OIDN_LIB "libOpenImageDenoise.so"
+#else
 #define OIDN_LIB "OpenImageDenoise.dll"
+#endif
 
 namespace oidn
 {
